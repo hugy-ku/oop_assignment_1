@@ -1,4 +1,4 @@
-# Test Code for Procedural Library System
+# Test Code for OOP Library System
 from library_oop import *
 
 def test_library_system():
@@ -20,17 +20,22 @@ def test_library_system():
     print(library.add_book(3, "The Pragmatic Programmer", "Hunt & Thomas", 1))
     print(library.add_book(4, "Design Patterns", "Gang of Four", 2))
 
-    # # Test 3: Display Available Books
-    print("\n--- TEST 3: Display Available Books ---")
+    # Test 3: Display Available Books
+    print("\n--- TEST 3: Displaying Available Books ---")
     print(library.display_available_books())
 
-    # # Test 2: Add Members
-    # print("\n--- TEST 2: Registering Members ---")
-    # add_member(101, "Alice Smith", "alice@email.com")
-    # add_member(102, "Bob Jones", "bob@email.com")
-    # add_member(103, "Carol White", "carol@email.com")
+    # Test 4: Add Members
+    print("\n--- TEST 4: Registering Members ---")
+    print(library.add_member(101, "Alice Smith", "alice@email.com"))
+    print(library.add_member(102, "Bob Jones", "bob@email.com"))
+    print(library.add_member(103, "Carol White", "carol@email.com"))
     
-    
+    # Test 5: Display Members
+    print("\n--- TEST 5: Displaying Members ---")
+    for member in library.members:
+        print(f"{member.member_id} - {member.name}")
+
+
     # # Test 4: Successful Book Borrowing
     # print("\n--- TEST 4: Successful Borrowing ---")
     # borrow_book(101, 1)  # Alice borrows Python Crash Course
