@@ -15,6 +15,13 @@ class Member():
         self.email = email
         self.borrowed = []
 
+class Transaction():
+    def __init__(self, member: Member, book: Book):
+        self.member_id = member.member_id
+        self.book_id = book.book_id
+        self.member_name = member.name
+        self.book_title = book.title
+
 class Library():
     def __init__(self):
         self.books = []
