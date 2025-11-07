@@ -7,6 +7,16 @@ class Book():
         self.author = author
         self.available_copies = copies
         self.total_copies = copies
+    
+    def _borrow(self):
+        if self.available_copies <= 0:
+            return False
+        self.available_copies -= 1
+        return True
+    
+    def _return(self):
+        self.available_copies += 1
+        return True
 
 class Member():
     def __init__(self, member_id, name, email):
@@ -14,12 +24,21 @@ class Member():
         self.name = name
         self.email = email
         self.borrowed = []
+    
+    def _borrow(self, book):
+        self.borrowed.append(Transaction(book))
+        return True
+    
+    def _return(self, book):
+        for i, transaction in enumerate(self.borrowed):
+            if transaction.book_id == book.book_id:
+                self.pop(i)
+                return True
+        return False
 
 class Transaction():
-    def __init__(self, member: Member, book: Book):
-        self.member_id = member.member_id
+    def __init__(self, book):
         self.book_id = book.book_id
-        self.member_name = member.name
         self.book_title = book.title
 
 class Library():
@@ -48,6 +67,7 @@ class Library():
             if member.member_id == member_id:
                 return member
         return None
+
 
     def display_available_books(self):
         books = self.books
