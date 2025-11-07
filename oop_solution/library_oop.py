@@ -37,6 +37,18 @@ class Library():
         self.members.append(member)
         return f"Member '{name}' registered successfully!"
     
+    def find_book(self, book_id):
+        for book in self.books:
+            if book.book_id == book_id:
+                return book
+        return None
+    
+    def find_member(self, member_id):
+        for member in self.members:
+            if member.member_id == member_id:
+                return member
+        return None
+
     def display_available_books(self):
         books = self.books
         result = []
