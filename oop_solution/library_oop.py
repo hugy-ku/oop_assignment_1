@@ -26,6 +26,8 @@ class Member():
         self.borrowed = []
     
     def _borrow(self, book):
+        if len(self.borrowed) >= 3:
+            return False
         self.borrowed.append(Transaction(book))
         return True
     
@@ -56,18 +58,35 @@ class Library():
         self.members.append(member)
         return f"Member '{name}' registered successfully!"
     
-    def find_book(self, book_id):
+    def find_book(self, book_id) -> Book:
         for book in self.books:
             if book.book_id == book_id:
                 return book
         return None
     
-    def find_member(self, member_id):
+    def find_member(self, member_id) -> Member:
         for member in self.members:
             if member.member_id == member_id:
                 return member
         return None
 
+    def borrow_book(self, member_id, book_id):
+        member = self.find_member(member_id)
+        book = self.find_book(book_id)
+        
+        if not member:
+            return "Error: Member not found!"
+        if not book:
+            return "Error: Book not found!"
+        
+        status = book._borrow()
+        if not status:
+            return "Error: No copies available!"
+        status = member._borrow(book)
+        if not status:
+            return "Error: Member has reached borrowing limit!"
+        return True
+        
 
     def display_available_books(self):
         books = self.books
@@ -75,5 +94,5 @@ class Library():
         result.append("\n=== Available Books ===")
         for book in books:
             if book.available_copies > 0:
-                result.append(f"{book.title} by {book.author} - {book.available_copies} copies available")
+                result.append(f"{book.book_id} {book.title} by {book.author} - {book.available_copies} copies available")
         return '\n'.join(result)

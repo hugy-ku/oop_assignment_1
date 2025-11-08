@@ -35,37 +35,38 @@ def test_library_system():
     for member in library.members:
         print(f"{member.member_id} - {member.name}")
 
-
-    # # Test 4: Successful Book Borrowing
-    # print("\n--- TEST 4: Successful Borrowing ---")
-    # borrow_book(101, 1)  # Alice borrows Python Crash Course
-    # borrow_book(101, 2)  # Alice borrows Clean Code
-    # borrow_book(102, 1)  # Bob borrows Python Crash Course
+    # Test 6: Successful Book Borrowing
+    print("\n--- TEST 6: Successful Borrowing ---")
+    print(library.borrow_book(101, 1))  # Alice borrows Python Crash Course
+    print(library.borrow_book(101, 2))  # Alice borrows Clean Code
+    print(library.borrow_book(102, 1))  # Bob borrows Python Crash Course
     
+    # Test 7: Display Available Books After Borrowing
+    print("\n--- TEST 7: Available Books After Borrowing ---")
+    print(library.display_available_books())
+
+    # Test 8: Borrow Last Available Copy
+    print("\n--- TEST 8: Borrowing Last Copy ---")
+    print(library.borrow_book(103, 3))  # Carol borrows the only copy of Pragmatic Programmer
+    print(library.display_available_books())
+    
+    # Test 9: Try to Borrow Unavailable Book
+    print("\n--- TEST 9: Attempting to Borrow Unavailable Book ---")
+    print(library.borrow_book(102, 3))  # Bob tries to borrow unavailable book
+    
+    # Test 10: Borrowing Limit Test
+    print("\n--- TEST 10: Testing Borrowing Limit (3 books max) ---")
+    print(library.borrow_book(101, 4))  # Alice's 3rd book
+    print(library.borrow_book(101, 4))  # Alice tries to borrow 4th book (should fail)
+
     # # Test 5: Display Member's Borrowed Books
     # print("\n--- TEST 5: Display Member's Books ---")
     # display_member_books(101)  # Alice's books
     # display_member_books(102)  # Bob's books
     # display_member_books(103)  # Carol's books (none)
     
-    # # Test 6: Display Available Books After Borrowing
-    # print("\n--- TEST 6: Available Books After Borrowing ---")
-    # display_available_books()
     
-    # # Test 7: Borrow Last Available Copy
-    # print("\n--- TEST 7: Borrowing Last Copy ---")
-    # borrow_book(103, 3)  # Carol borrows the only copy of Pragmatic Programmer
-    # display_available_books()
-    
-    # # Test 8: Try to Borrow Unavailable Book
-    # print("\n--- TEST 8: Attempting to Borrow Unavailable Book ---")
-    # borrow_book(102, 3)  # Bob tries to borrow unavailable book
-    
-    # # Test 9: Borrowing Limit Test
-    # print("\n--- TEST 9: Testing Borrowing Limit (3 books max) ---")
-    # borrow_book(101, 4)  # Alice's 3rd book
     # display_member_books(101)
-    # borrow_book(101, 3)  # Alice tries to borrow 4th book (should fail)
     
     # # Test 10: Return Books
     # print("\n--- TEST 10: Returning Books ---")
