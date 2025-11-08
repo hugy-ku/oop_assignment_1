@@ -41,7 +41,6 @@ class Member():
 class Transaction():
     def __init__(self, book):
         self.book_id = book.book_id
-        self.book_title = book.title
 
 class Library():
     def __init__(self):
@@ -86,7 +85,7 @@ class Library():
         if not status:
             return "Error: Member has reached borrowing limit!"
         return True
-        
+
 
     def display_available_books(self):
         books = self.books
@@ -95,4 +94,18 @@ class Library():
         for book in books:
             if book.available_copies > 0:
                 result.append(f"{book.book_id} {book.title} by {book.author} - {book.available_copies} copies available")
+        return '\n'.join(result)
+
+    def display_member_books(self, member_id):
+        result = []
+        member = self.find_member(member_id)
+        if not member:
+            return "Error: Member not found!"
+        
+        result.append(f"\n=== Books borrowed by {member.name} ===")
+        if len(member.borrowed) == 0:
+            return "No books currently borrowed"
+        for transaction in member.borrowed:
+            book = self.find_book(transaction.book_id)
+            result.append(f"- {book.title} by {book.author}")
         return '\n'.join(result)

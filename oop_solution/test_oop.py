@@ -59,14 +59,11 @@ def test_library_system():
     print(library.borrow_book(101, 4))  # Alice's 3rd book
     print(library.borrow_book(101, 4))  # Alice tries to borrow 4th book (should fail)
 
-    # # Test 5: Display Member's Borrowed Books
-    # print("\n--- TEST 5: Display Member's Books ---")
-    # display_member_books(101)  # Alice's books
-    # display_member_books(102)  # Bob's books
-    # display_member_books(103)  # Carol's books (none)
-    
-    
-    # display_member_books(101)
+    # # Test 11: Display Member's Borrowed Books
+    print("\n--- TEST 11: Display Member's Books ---")
+    print(library.display_member_books(101))  # Alice's books
+    print(library.display_member_books(102))  # Bob's books
+    print(library.display_member_books(103))  # Carol's books
     
     # # Test 10: Return Books
     # print("\n--- TEST 10: Returning Books ---")
