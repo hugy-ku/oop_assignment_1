@@ -15,6 +15,8 @@ class Book():
         return True
     
     def _return(self):
+        if self.available_copies >= self.total_copies:
+            return False
         self.available_copies += 1
         return True
 
@@ -34,7 +36,7 @@ class Member():
     def _return(self, book):
         for i, transaction in enumerate(self.borrowed):
             if transaction.book_id == book.book_id:
-                self.pop(i)
+                self.borrowed.pop(i)
                 return True
         return False
 
@@ -84,8 +86,19 @@ class Library():
         status = member._borrow(book)
         if not status:
             return "Error: Member has reached borrowing limit!"
-        return True
+        return f"{member.name} borrowed '{book.title}'"
 
+    def return_book(self, member_id, book_id):
+        member = self.find_member(member_id)
+        book = self.find_book(book_id)
+        if not member or not book:
+            return "Error: Member or book not found!"
+        
+        status = member._return(book)
+        if not status:
+            return "Error: This member hasn't borrowed this book!"
+        book._return()
+        return f"{member.name} returned '{book.title}'"
 
     def display_available_books(self):
         books = self.books

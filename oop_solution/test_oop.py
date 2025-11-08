@@ -65,22 +65,22 @@ def test_library_system():
     print(library.display_member_books(102))  # Bob's books
     print(library.display_member_books(103))  # Carol's books
     
-    # # Test 10: Return Books
-    # print("\n--- TEST 10: Returning Books ---")
-    # return_book(101, 1)  # Alice returns Python Crash Course
-    # return_book(102, 1)  # Bob returns Python Crash Course
-    # display_member_books(101)
-    # display_available_books()
+    # Test 12: Return Books
+    print("\n--- TEST 12: Returning Books ---")
+    print(library.return_book(101, 1))  # Alice returns Python Crash Course
+    print(library.return_book(102, 1))  # Bob returns Python Crash Course
+    print(library.display_member_books(101))
+    print(library.display_available_books())
     
-    # # Test 11: Try to Return Book Not Borrowed
-    # print("\n--- TEST 11: Attempting Invalid Return ---")
-    # return_book(102, 2)  # Bob tries to return book he didn't borrow
+    # Test 13: Try to Return Book Not Borrowed
+    print("\n--- TEST 13: Attempting Invalid Return ---")
+    print(library.return_book(102, 2))  # Bob tries to return book he didn't borrow
     
-    # # Test 12: Return and Borrow Again
-    # print("\n--- TEST 12: Return and Re-borrow ---")
-    # return_book(103, 3)  # Carol returns Pragmatic Programmer
-    # borrow_book(102, 3)  # Bob borrows it
-    # display_member_books(102)
+    # Test 14: Return and Borrow Again
+    print("\n--- TEST 14: Return and Re-borrow ---")
+    print(library.return_book(103, 3))  # Carol returns Pragmatic Programmer
+    print(library.borrow_book(102, 3))  # Bob borrows it
+    print(library.display_member_books(102))
     
     # # Test 13: Error Cases - Non-existent Member/Book
     # print("\n--- TEST 13: Error Handling ---")
