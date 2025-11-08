@@ -117,7 +117,7 @@ class Library():
         
         result.append(f"\n=== Books borrowed by {member.name} ===")
         if len(member.borrowed) == 0:
-            return "No books currently borrowed"
+            result.append("No books currently borrowed")
         for transaction in member.borrowed:
             book = self.find_book(transaction.book_id)
             result.append(f"- {book.title} by {book.author}")

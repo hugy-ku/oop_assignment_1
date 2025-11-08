@@ -82,34 +82,24 @@ def test_library_system():
     print(library.borrow_book(102, 3))  # Bob borrows it
     print(library.display_member_books(102))
     
-    # # Test 13: Error Cases - Non-existent Member/Book
-    # print("\n--- TEST 13: Error Handling ---")
-    # borrow_book(999, 1)  # Non-existent member
-    # borrow_book(101, 999)  # Non-existent book
-    # return_book(999, 1)  # Non-existent member
-    # display_member_books(999)  # Non-existent member
+    # Test 15: Error Cases - Non-existent Member/Book
+    print("\n--- TEST 15: Error Handling ---")
+    print(library.borrow_book(999, 1))  # Non-existent member
+    print(library.borrow_book(101, 999))  # Non-existent book
+    print(library.return_book(999, 1))  # Non-existent member
+    print(library.display_member_books(999))  # Non-existent member
     
-    # # Test 14: Final Status
-    # print("\n--- TEST 14: Final Library Status ---")
-    # print("\nAll Borrowed Books:")
-    # for transaction in borrowed_books:
-    #     print(f"  {transaction['member_name']} has '{transaction['book_title']}'")
+    # Test 16: Final Status
+    print("\n--- TEST 14: Final Library Status ---")
+    print("\nAll Borrowed Books:")
+    for member in library.members:
+        print(library.display_member_books(member.member_id))
+
+    print(library.display_available_books())
     
-    # print("\nAll Members and Their Books:")
-    # for member in members:
-    #     print(f"\n{member['name']} ({member['id']}):")
-    #     if member['borrowed_books']:
-    #         for book_id in member['borrowed_books']:
-    #             book = find_book(book_id)
-    #             print(f"  - {book['title']}")
-    #     else:
-    #         print("  (No books borrowed)")
-    
-    # display_available_books()
-    
-    # print("\n" + "=" * 60)
-    # print("TEST COMPLETE")
-    # print("=" * 60)
+    print("\n" + "=" * 60)
+    print("TEST COMPLETE")
+    print("=" * 60)
 
 try:
     test_library_system()
